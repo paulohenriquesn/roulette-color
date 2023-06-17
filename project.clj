@@ -13,6 +13,7 @@
                  [cheshire "5.11.0"]
                  [compojure "1.7.0"]
                  [ring "1.10.0"]
-                 [buddy/buddy-sign "3.5.346"]]
+                 [buddy/buddy-sign "3.5.346"]
+                 [nano-id "1.0.0"]]
   :main main
   :repl-options {:init-ns main})
