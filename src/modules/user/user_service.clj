@@ -25,3 +25,6 @@
     (if (= true (ports.crypto/verify-password (-> user :password) password))
       (str (ports.token/generate-token (-> user :id)))
       (throw (Exception. "Password invalid!")))))
+
+(defn bet []
+  "ok")
