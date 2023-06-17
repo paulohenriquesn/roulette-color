@@ -5,5 +5,5 @@
   (crypto/encrypt password))
 
 (defn verify-password [hash password]
-  (crypto/check hash passwowrd))
+  (crypto/check hash password))
 
