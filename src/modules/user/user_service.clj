@@ -13,12 +13,15 @@
     (println "User" email "registered with hash password" hash-password))
   nil)
 
-(defn login
-  [email password]
+(defn find-one [email]
   (let [rows (j/query databases.pg/db ["SELECT * FROM users WHERE email = ?" email])]
     (if (= nil (first rows))
       (throw (Exception. "Ops user not found!"))
-      (let [user (first rows)]
-        (if (= true (ports.crypto/verify-password (-> user :password) password))
-          (str (ports.token/generate-token (-> user :id)))
-          (throw (Exception. "Password invalid!")))))))
+      (first rows))))
+
+(defn login
+  [email password]
+  (let [user (find-one email)]
+    (if (= true (ports.crypto/verify-password (-> user :password) password))
+      (str (ports.token/generate-token (-> user :id)))
+      (throw (Exception. "Password invalid!")))))
