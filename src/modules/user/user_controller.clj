@@ -19,14 +19,15 @@
                    token (service/login email password)]
                {:status  200
                 :headers {"Content-Type" "application/json"}
-                :body    (json/encode {:token token})})
-             )
+                :body    (json/encode {:token token})}))
+
            (POST "/bet" request
-             (let [headers (-> request :headers) token (get headers "authorization")]
-               (middlewares.is-auth/is-auth request)
+             (let [coins (-> request :body :coins)
+                   colors (-> request :body :colors)
+                   user-id (-> (middlewares.is-auth/is-auth request) :user-id)
+                   result (service/bet user-id colors coins)]
                {:status  200
-                :headers {"Content-Type" "application/json"}
-                :body    (json/encode {:token headers})})
-             ))
+                 :headers {"Content-Type" "application/json"}
+                 :body    (json/encode result)})))
 
 (defn fn-user-routes [] user-routes)
