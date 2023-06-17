@@ -1,6 +1,8 @@
 (ns env
   (:require [environ.core :as environ]))
 
+(def jwt-secret (if (nil? (environ/env "JWT_SECRET")) "dev"))
+
 (def database-envs
   (if (nil? (environ/env "DB_NAME"))
     {:DB_NAME     "dev"
