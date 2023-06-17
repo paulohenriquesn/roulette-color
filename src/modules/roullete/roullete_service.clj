@@ -1,4 +1,4 @@
-(ns service.roullete
+(ns modules.roullete.roullete-service
   (:require [constants.roullete]))
 
 (defn roll
