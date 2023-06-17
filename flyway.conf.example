@@ -1,0 +1,5 @@
+flyway.url=jdbc:postgresql://localhost:5432/dev
+flyway.user=dev
+flyway.password=dev
+flyway.locations=filesystem:src/migrations
+flyway.baselineOnMigrate=true

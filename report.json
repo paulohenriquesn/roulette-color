@@ -1,0 +1,112 @@
+{
+  "individualResults": [
+    {
+      "initialSchemaVersion": null,
+      "targetSchemaVersion": null,
+      "schemaName": "",
+      "migrations": [],
+      "migrationsExecuted": 0,
+      "success": false,
+      "flywayVersion": "9.19.3",
+      "database": "dev",
+      "warnings": [],
+      "timestamp": "2023-06-17T14:34:47.321124100",
+      "operation": "migrate",
+      "exception": "Migration V20230617143009__user.sql failed\n------------------------------------------\nSQL State  : 42601\nError Code : 0\nMessage    : ERROR: syntax error at or near \"user\"\n  Position: 14\nLocation   : src\\migrations\\V20230617143009__user.sql (C:\\Users\\Paulo Henrique\\Desktop\\roullete-color\\src\\migrations\\V20230617143009__user.sql)\nLine       : 1\nStatement  : CREATE TABLE user (\r\nid serial primary key,\r\nemail text not null unique,\r\npassword not null,\r\ncoin int default(0)\r\ncreated_at timestamp without time zone default(now())\r\n)\n",
+      "licenseFailed": false
+    },
+    {
+      "initialSchemaVersion": null,
+      "targetSchemaVersion": null,
+      "schemaName": "",
+      "migrations": [],
+      "migrationsExecuted": 0,
+      "success": false,
+      "flywayVersion": "9.19.3",
+      "database": "dev",
+      "warnings": [],
+      "timestamp": "2023-06-17T14:35:39.122103700",
+      "operation": "migrate",
+      "exception": "Migration V20230617143009__user.sql failed\n------------------------------------------\nSQL State  : 42601\nError Code : 0\nMessage    : ERROR: syntax error at or near \"user\"\n  Position: 14\nLocation   : src\\migrations\\V20230617143009__user.sql (C:\\Users\\Paulo Henrique\\Desktop\\roullete-color\\src\\migrations\\V20230617143009__user.sql)\nLine       : 1\nStatement  : CREATE TABLE user (\r\nid serial primary key,\r\nemail text not null unique,\r\npassword not null,\r\ncoin int default 0\r\ncreated_at timestamp without time zone default now()\r\n)\n",
+      "licenseFailed": false
+    },
+    {
+      "initialSchemaVersion": null,
+      "targetSchemaVersion": null,
+      "schemaName": "",
+      "migrations": [],
+      "migrationsExecuted": 0,
+      "success": false,
+      "flywayVersion": "9.19.3",
+      "database": "dev",
+      "warnings": [],
+      "timestamp": "2023-06-17T14:35:48.527799500",
+      "operation": "migrate",
+      "exception": "Migration V20230617143009__user.sql failed\n------------------------------------------\nSQL State  : 42601\nError Code : 0\nMessage    : ERROR: syntax error at or near \"not\"\n  Position: 86\nLocation   : src\\migrations\\V20230617143009__user.sql (C:\\Users\\Paulo Henrique\\Desktop\\roullete-color\\src\\migrations\\V20230617143009__user.sql)\nLine       : 1\nStatement  : CREATE TABLE \"user\" (\r\nid serial primary key,\r\nemail text not null unique,\r\npassword not null,\r\ncoin int default 0\r\ncreated_at timestamp without time zone default now()\r\n)\n",
+      "licenseFailed": false
+    },
+    {
+      "initialSchemaVersion": null,
+      "targetSchemaVersion": null,
+      "schemaName": "",
+      "migrations": [],
+      "migrationsExecuted": 0,
+      "success": false,
+      "flywayVersion": "9.19.3",
+      "database": "dev",
+      "warnings": [],
+      "timestamp": "2023-06-17T14:36:14.354623500",
+      "operation": "migrate",
+      "exception": "Migration V20230617143009__user.sql failed\n------------------------------------------\nSQL State  : 42601\nError Code : 0\nMessage    : ERROR: syntax error at or near \"created_at\"\n  Position: 122\nLocation   : src\\migrations\\V20230617143009__user.sql (C:\\Users\\Paulo Henrique\\Desktop\\roullete-color\\src\\migrations\\V20230617143009__user.sql)\nLine       : 1\nStatement  : CREATE TABLE \"user\" (\r\nid serial primary key,\r\nemail text not null unique,\r\npassword text not null,\r\ncoin int default 0\r\ncreated_at timestamp without time zone default now()\r\n)\n",
+      "licenseFailed": false
+    },
+    {
+      "initialSchemaVersion": null,
+      "targetSchemaVersion": "20230617143009",
+      "schemaName": "",
+      "migrations": [
+        {
+          "category": "Versioned",
+          "version": "20230617143009",
+          "description": "user",
+          "type": "SQL",
+          "filepath": "C:\\Users\\Paulo Henrique\\Desktop\\roullete-color\\src\\migrations\\V20230617143009__user.sql",
+          "executionTime": 37
+        }
+      ],
+      "migrationsExecuted": 1,
+      "success": true,
+      "flywayVersion": "9.19.3",
+      "database": "dev",
+      "warnings": [],
+      "timestamp": "2023-06-17T14:36:24.747398300",
+      "operation": "migrate",
+      "exception": null,
+      "licenseFailed": false
+    },
+    {
+      "initialSchemaVersion": null,
+      "targetSchemaVersion": "20230617143009",
+      "schemaName": "",
+      "migrations": [
+        {
+          "category": "Versioned",
+          "version": "20230617143009",
+          "description": "user",
+          "type": "SQL",
+          "filepath": "C:\\Users\\Paulo Henrique\\Desktop\\roullete-color\\src\\migrations\\V20230617143009__user.sql",
+          "executionTime": 38
+        }
+      ],
+      "migrationsExecuted": 1,
+      "success": true,
+      "flywayVersion": "9.19.3",
+      "database": "dev",
+      "warnings": [],
+      "timestamp": "2023-06-17T14:48:57.968286500",
+      "operation": "migrate",
+      "exception": null,
+      "licenseFailed": false
+    }
+  ]
+}
