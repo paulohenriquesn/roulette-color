@@ -5,11 +5,20 @@
 
 (defroutes user-routes
            (POST "/register" request
-                 (let [email (-> request :body :email)
-                       password (-> request :body :password)]
-                   (service/create email password))
-                 {:status  200
-                  :headers {"Content-Type" "application/json"}
-                  :body    (json/encode {:message "OK"})}))
+             (let [email (-> request :body :email)
+                   password (-> request :body :password)]
+               (service/create email password))
+             {:status  200
+              :headers {"Content-Type" "application/json"}
+              :body    (json/encode {:message "OK"})})
+
+           (POST "/login" request
+             (let [email (-> request :body :email)
+                   password (-> request :body :password)
+                   token (service/login email password)]
+               {:status  200
+                :headers {"Content-Type" "application/json"}
+                :body    (json/encode {:token token})})
+             ))
 
 (defn fn-user-routes [] user-routes)
