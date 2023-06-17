@@ -15,18 +15,21 @@
   nil)
 
 (defn find-one [email]
+  "Find a user by email"
   (let [rows (j/query databases.pg/db ["SELECT * FROM users WHERE email = ?" email])]
     (if (= nil (first rows))
       (throw (Exception. "Ops user not found!"))
       (first rows))))
 
 (defn find-one-by-id [id]
+  "Find a user by id"
   (let [rows (j/query databases.pg/db ["SELECT * FROM users WHERE id = ?" id])]
     (if (= nil (first rows))
       (throw (Exception. "Ops user not found!"))
       (first rows))))
 
 (defn login
+  "Auth user"
   [email password]
   (let [user (find-one email)]
     (if (= true (ports.crypto/verify-password (-> user :password) password))
@@ -35,22 +38,26 @@
 
 
 (defn win [user-id quantity]
+  "it will be called when player wins"
   (let [user (find-one-by-id user-id)]
     (j/execute! databases.pg/db ["UPDATE users SET coin = ? WHERE id = ?" (+ (-> user :coin) quantity) user-id]))
   (println "User" user-id "wins" quantity "coins"))
 
 (defn balance [user-id]
+  "Get balance from user"
   (println user-id)
   (let [user (find-one-by-id user-id)
         balance (-> user :coin)]
     balance))
 
 (defn lose [user-id quantity]
+  "it will be called when player loses"
   (let [user (find-one-by-id user-id)]
     (j/execute! databases.pg/db ["UPDATE users SET coin = ? WHERE id = ?" (- (-> user :coin) quantity) user-id]))
   (println "User" user-id "loses" quantity "coins"))
 
 (defn bet [user-id colors coins]
+  "It will be called when player bet"
   (println user-id colors coins)
   (let [user (find-one-by-id user-id)]
     (println user)
