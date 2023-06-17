@@ -13,6 +13,6 @@
                  [cheshire "5.11.0"]
                  [compojure "1.7.0"]
                  [ring "1.10.0"]
-                 [ovotech/ring-jwt "2.3.0"]]
+                 [buddy/buddy-sign "3.5.346"]]
   :main main
   :repl-options {:init-ns main})
