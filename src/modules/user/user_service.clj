@@ -45,7 +45,6 @@
 
 (defn balance [user-id]
   "Get balance from user"
-  (println user-id)
   (let [user (find-one-by-id user-id)
         balance (-> user :coin)]
     balance))
@@ -58,16 +57,16 @@
 
 (defn bet [user-id colors coins]
   "It will be called when player bet"
-  (println user-id colors coins)
-  (let [user (find-one-by-id user-id)]
-    (println user)
-    (if (< (-> user :coin) coins)
-      (throw (Exception. "Coins insufficient to bet"))
-      (let [result (modules.roullete.roullete-service/roll)]
-        (if (or (= (first result) (first colors))
-                (= (first result) (second colors))
-                (= (second result) (first colors))
-                (= (second result) (second colors)))
-          (win user-id (* coins 2))
-          (lose user-id coins))
-        result))))
+  (if (= (first colors) (second colors))
+    (throw (Exception. "Ops second color is the same as first"))
+    ((let [user (find-one-by-id user-id)]
+       (if (< (-> user :coin) coins)
+         (throw (Exception. "Coins insufficient to bet"))
+         (let [result (-> (modules.roullete.roullete-service/roll) :colors)]
+           (if (or (= (first result) (first colors))
+                   (= (first result) (second colors))
+                   (= (second result) (first colors))
+                   (= (second result) (second colors)))
+             (win user-id (* coins 2))
+             (lose user-id coins))
+           result))))))
