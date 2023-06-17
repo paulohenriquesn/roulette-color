@@ -14,3 +14,4 @@ pom.xml.asc
 flyway.conf
 .idea
 report.html
+report.json

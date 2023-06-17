@@ -3,7 +3,7 @@
             [clojure.java.jdbc :as j]
             [ports.crypto]
             [ports.token]
-            [modules.roullete.roullete-service]))
+            [modules.roulette.roulette_service]))
 
 (defn create
   "Creates a user with the given email and password"
@@ -62,7 +62,7 @@
     ((let [user (find-one-by-id user-id)]
        (if (< (-> user :coin) coins)
          (throw (Exception. "Coins insufficient to bet"))
-         (let [result (-> (modules.roullete.roullete-service/roll) :colors)]
+         (let [result (-> (modules.roulette.roulette_service/roll) :colors)]
            (if (or (= (first result) (first colors))
                    (= (first result) (second colors))
                    (= (second result) (first colors))
