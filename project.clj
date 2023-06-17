@@ -12,6 +12,7 @@
                  [ring/ring-json "0.5.1"]
                  [cheshire "5.11.0"]
                  [compojure "1.7.0"]
-                 [ring "1.10.0"]]
+                 [ring "1.10.0"]
+                 [ovotech/ring-jwt "2.3.0"]]
   :main main
   :repl-options {:init-ns main})
