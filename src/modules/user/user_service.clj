@@ -3,8 +3,7 @@
             [clojure.java.jdbc :as j]
             [ports.crypto]
             [ports.token]
-            [modules.roullete.roullete-service]
-            [cheshire.core :as json]))
+            [modules.roullete.roullete-service]))
 
 (defn create
   "Creates a user with the given email and password"
