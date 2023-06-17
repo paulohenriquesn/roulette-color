@@ -39,6 +39,13 @@
   (let [user (find-one-by-id user-id)]
     (j/execute! databases.pg/db ["UPDATE users SET coin = ? WHERE id = ?" (+ (-> user :coin) quantity) user-id]))
   (println "User" user-id "wins" quantity "coins"))
+
+(defn balance [user-id]
+  (println user-id)
+  (let [user (find-one-by-id user-id)
+        balance (-> user :coin)]
+    balance))
+
 (defn lose [user-id quantity]
   (let [user (find-one-by-id user-id)]
     (j/execute! databases.pg/db ["UPDATE users SET coin = ? WHERE id = ?" (- (-> user :coin) quantity) user-id]))

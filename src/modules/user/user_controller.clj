@@ -27,7 +27,15 @@
                    user-id (-> (middlewares.is-auth/is-auth request) :user-id)
                    result (service/bet user-id colors coins)]
                {:status  200
-                 :headers {"Content-Type" "application/json"}
-                 :body    (json/encode result)})))
+                :headers {"Content-Type" "application/json"}
+                :body    (json/encode result)}))
+
+           (GET "/balance" request
+             (let [
+                   user-id (-> (middlewares.is-auth/is-auth request) :user-id)
+                   balance (service/balance user-id)]
+               {:status  200
+                :headers {"Content-Type" "application/json"}
+                :body    (json/encode balance)})))
 
 (defn fn-user-routes [] user-routes)
