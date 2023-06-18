@@ -5,7 +5,6 @@
             [ring.middleware.json :as middleware]
             [clojure.java.io :as io]))
 
-(use 'selmer.parser)
 (defroutes app-routes
            (GET "/" [] (io/resource "views/index.html"))
            (GET "/login" [] (io/resource "views/login.html"))
