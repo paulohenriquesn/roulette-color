@@ -23,9 +23,9 @@
 
            (POST "/bet" request
              (let [coins (-> request :body :coins)
-                   colors (-> request :body :colors)
+                   color (-> request :body :color)
                    user-id (-> (middlewares.is-auth/is-auth request) :user-id)
-                   result (service/bet user-id colors coins)]
+                   result (service/bet user-id color coins)]
                {:status  200
                 :headers {"Content-Type" "application/json"}
                 :body    (json/encode result)}))

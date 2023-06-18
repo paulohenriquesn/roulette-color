@@ -55,18 +55,13 @@
     (j/execute! databases.pg/db ["UPDATE users SET coin = ? WHERE id = ?" (- (-> user :coin) quantity) user-id]))
   (println "User" user-id "loses" quantity "coins"))
 
-(defn bet [user-id colors coins]
+(defn bet [user-id color coins]
   "It will be called when player bet"
-  (if (= (first colors) (second colors))
-    (throw (Exception. "Ops second color is the same as first"))
-    ((let [user (find-one-by-id user-id)]
-       (if (< (-> user :coin) coins)
-         (throw (Exception. "Coins insufficient to bet"))
-         (let [result (-> (modules.roulette.roulette_service/roll) :colors)]
-           (if (or (= (first result) (first colors))
-                   (= (first result) (second colors))
-                   (= (second result) (first colors))
-                   (= (second result) (second colors)))
-             (win user-id (* coins 2))
-             (lose user-id coins))
-           result))))))
+  (let [user (find-one-by-id user-id)]
+    (if (< (-> user :coin) coins)
+      (throw (Exception. "Coins insufficient to bet"))
+      (let [result (-> (modules.roulette.roulette_service/roll) :color)]
+        (if (= result color)
+          (win user-id (* coins 2))
+          (lose user-id coins))
+        result))))

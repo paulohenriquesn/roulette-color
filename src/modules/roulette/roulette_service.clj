@@ -5,7 +5,5 @@
 (defn roll
   "Roll roulette and give two colors random"
   []
-  (let [colors (repeatedly 2 #(rand-nth constants.roulette/colors))]
-    (if (= (first colors) (second colors))
-      (recur)
-      {:colors colors :id (nano-id)})))
+  (let [color (rand-nth constants.roulette/colors)]
+      {:color color :id (nano-id)}))
