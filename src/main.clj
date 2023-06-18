@@ -2,9 +2,16 @@
   (:require [modules.user.user-controller :as user-controller]
             [ring.adapter.jetty :as jetty]
             [compojure.core :refer :all]
-            [ring.middleware.json :as middleware]))
+            [ring.middleware.json :as middleware]
+            [clojure.java.io :as io]))
 
-(defroutes app-routes (user-controller/fn-user-routes))
+(use 'selmer.parser)
+(defroutes app-routes
+           (GET "/" [] (io/resource "views/index.html"))
+           (GET "/login" [] (io/resource "views/login.html"))
+           (GET "/register" [] (io/resource "views/register.html"))
+           (GET "/scripts/main.js" [] (io/resource "views/scripts/main.js"))
+           (user-controller/fn-user-routes))
 
 (def app
   (-> app-routes
